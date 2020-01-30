@@ -6,3 +6,20 @@
 let debounce = require('lodash.debounce');
 
 console.log(debounce);
+
+//-----------------------------------
+refs = {
+  input: document.querySelector('#inpt'),
+  contryBlockWrapper: document.querySelector('#contryBlock'),
+};
+
+const getInputText = () => {
+  return refs.input.value;
+};
+
+refs.input.addEventListener('focus', () =>
+  refs.contryBlockWrapper.classList.add('hidden'),
+);
+refs.input.addEventListener('blur', () =>
+  refs.contryBlockWrapper.classList.remove('hidden'),
+);
