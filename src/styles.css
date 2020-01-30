@@ -18,3 +18,59 @@ body {
    */
   background-image: url('./images/bg-pattern.png');
 }
+
+/*------------------------------------------------*/
+.hidden {
+  display: none;
+}
+
+.container {
+  max-width: 530px;
+  margin: 0 auto;
+}
+
+input[type='text'] {
+  width: 100%;
+  font-size: 17px;
+}
+
+.list {
+  margin-top: 15px;
+  font-size: 17px;
+}
+
+.title {
+  text-align: center;
+  font-size: 30px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.contry-options > ul {
+  margin: 0;
+  padding: 0;
+}
+.contry-options > ul > li {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.param {
+  display: inline;
+  font-weight: 400;
+}
+
+.lang {
+  font-weight: 400;
+  margin-left: 25px;
+  margin-top: 10px;
+  padding: 0;
+}
+
+.contry-flag {
+  height: 200px;
+}
