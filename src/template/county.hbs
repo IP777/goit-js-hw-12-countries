@@ -1,0 +1,28 @@
+<div>
+    <h2 class="title">{{name}}</h2>
+    <div class="wrapper">
+        <div class="contry-options">
+            <ul>
+                <li>
+                    Capital:
+                    <p class="param capital">{{capital}}</p>
+                </li>
+                <li>
+                    Population:
+                    <p class="param population">{{population}}</p>
+                </li>
+                <li>
+                    Languages:
+                    <ul class="lang">
+                        {{#each languages}}
+                        <li>{{this.name}}</li>
+                        {{/each}}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <img class="contry-flag" src="{{flag}}" alt="{{name}}" />
+        </div>
+    </div>
+</div>
