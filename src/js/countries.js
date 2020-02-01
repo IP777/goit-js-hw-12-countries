@@ -13,16 +13,31 @@ const refs = {
   contryBlock: document.querySelector('#contryBlock'),
 };
 
-const getInputText = () => {
-  return refs.input.value;
+const inputEdits = {
+  getInputText() {
+    return refs.input.value;
+  },
+  setInputText(someText) {
+    refs.input.value = someText;
+  },
+  addListner() {
+    refs.input.addEventListener(
+      'input',
+      _.debounce(() => {
+        //Проверка на пустое поле
+        if (this.getInputText()) {
+          myHttpRequest.getRequest(this.getInputText());
+        }
+      }, 500),
+    );
+  },
+  startScript() {
+    inputEdits.setInputText('');
+    this.addListner();
+  },
 };
 
-refs.input.addEventListener(
-  'input',
-  _.debounce(() => {
-    myHttpRequest.getRequest(getInputText());
-  }, 1000),
-);
+inputEdits.startScript();
 
 //---------------------------------------
 
@@ -49,16 +64,17 @@ const myHttpRequest = {
         this.renderRequest(data);
       })
       .catch(error => {
+        //console.log(`Oh no, erorr ${error}`);
         PNotify.error({
-          title: 'Oh no erorr',
+          title: 'Oh no, erorr',
           text: error,
         });
-        //console.log(`Oh no erorr ${error}`);
+        this.hiddenAddRemove();
       });
   },
   renderRequest(data) {
     const dataLenght = [...data].length;
-    console.log(dataLenght);
+    //console.log(dataLenght);
     if (dataLenght == 1) {
       this.oneRequest(data);
     } else if (dataLenght > 1 && dataLenght <= 10) {
@@ -97,10 +113,3 @@ const myHttpRequest = {
     }
   },
 };
-
-// refs.input.addEventListener('focus', () => {
-//   PNotify.error({
-//     title: 'Test',
-//     text: 'Test, r.',
-//   });
-// });
