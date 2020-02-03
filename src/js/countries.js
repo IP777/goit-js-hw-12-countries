@@ -58,6 +58,7 @@ const myHttpRequest = {
           return response.json();
         }
         // если HTTP-статус в диапазоне 400-499, 500-599 передаёт ошибку
+        throw response;
       })
       .then(data => {
         //console.log(data);
@@ -66,8 +67,8 @@ const myHttpRequest = {
       .catch(error => {
         //console.log(`Oh no, erorr ${error}`);
         PNotify.error({
-          title: 'Oh no, erorr',
-          text: error,
+          title: 'Oh no, something happened',
+          text: `Type of error: ${error.statusText} ${error.status}`,
         });
         this.hiddenAddRemove();
       });
